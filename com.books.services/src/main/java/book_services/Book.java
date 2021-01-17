@@ -15,6 +15,14 @@ public class Book {
         quantity = 0;
     }
 
+    public Book(String name, String barCode, String author, double price, int quantity) {
+        this.name = name;
+        this.barCode = barCode;
+        this.author = author;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
     public String getName() {
         return this.name;
     }
@@ -55,4 +63,8 @@ public class Book {
         this.quantity = quantity;
     }
 
+    public String jsonString() {
+        return "{ \"name\": \"" + name + " \",\"author\": \"" + author + " \",\"bar code\": \"" + barCode
+                + "\",\"price\": " + price + " , \"quantity\": " + quantity + " } ";
+    }
 }
