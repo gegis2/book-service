@@ -18,7 +18,7 @@ public class App {
             @Override
             public Object handle(Request request, Response response) throws Exception {
                 Book book = new Book("book", "barcode", "author", 5.5, 5);
-                return book.toString();
+                return book.jsonString();
             }
         });
     }
