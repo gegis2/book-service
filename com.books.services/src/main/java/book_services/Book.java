@@ -1,11 +1,11 @@
 package book_services;
+
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Book {
-
     private String name;
     private String barCode;
     private String author;
