@@ -1,10 +1,5 @@
 package book_services;
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
 public class Book {
     private String name;
     private String barCode;
@@ -13,6 +8,11 @@ public class Book {
     private int quantity;
 
     public Book() {
+        name = "";
+        barCode = "";
+        author = "";
+        price = 0.0;
+        quantity = 0;
     }
 
     public Book(String name, String barCode, String author, double price, int quantity) {
@@ -27,7 +27,6 @@ public class Book {
         return this.name;
     }
 
-    @XmlElement
     public void setName(String name) {
         this.name = name;
     }
@@ -36,7 +35,6 @@ public class Book {
         return this.barCode;
     }
 
-    @XmlAttribute
     public void setBarCode(String barCode) {
         this.barCode = barCode;
     }
@@ -45,7 +43,6 @@ public class Book {
         return this.author;
     }
 
-    @XmlElement
     public void setAuthor(String author) {
         this.author = author;
     }
@@ -54,7 +51,6 @@ public class Book {
         return this.price;
     }
 
-    @XmlElement
     public void setPrice(double price) {
         this.price = price;
     }
@@ -63,7 +59,6 @@ public class Book {
         return this.quantity;
     }
 
-    @XmlElement
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
