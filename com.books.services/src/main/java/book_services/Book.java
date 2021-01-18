@@ -67,4 +67,9 @@ public class Book {
         return "{ \"name\": \"" + name + " \",\"author\": \"" + author + " \",\"bar code\": \"" + barCode
                 + "\",\"price\": " + price + " , \"quantity\": " + quantity + " } ";
     }
+
+    public String[] csvString() {
+        String[] csvLine = { name, author, barCode, price + "", quantity + "" };
+        return csvLine;
+    }
 }

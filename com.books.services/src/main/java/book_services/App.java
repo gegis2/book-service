@@ -12,7 +12,7 @@ import static spark.Spark.*;
  */
 public class App {
     public static void main(String[] args) {
-
+        iostream.appendData();
         after((Filter) (request, response) -> {
             response.header("Access-Control-Allow-Origin", "*");
             response.header("Access-Control-Allow-Methods", "GET");
