@@ -1,4 +1,2 @@
-book,author,barcode,5.5,15
-book,author,barcode,5.5,5
-book2,author,barcode,5.5,5
-book,author,barcode,5.5,5
+book,author,barcode,5.5,5,5,1901
+book,author,barcode2,5.5,5,5,1800

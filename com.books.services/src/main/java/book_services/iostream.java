@@ -19,26 +19,24 @@ public class iostream {
             "book-service\\com.books.services\\src\\main\\java\\book_services\\Data\\books.csv").getAbsolutePath();
 
     /**
-     * adds a book to the csv file, if it exists increases the quantity
+     * adds a book to the csv file
      * 
      * @param book
-     * @return false if failed; true if succesfull
+     * @return status code
      */
-    public static boolean addBook(Book book) {
+    public static int addBook(Book book) {
         Book temp = findBook(book.getBarCode());
         if (temp != null) {
-            book.setQuantity(temp.getQuantity() + book.getQuantity());
-            updateBook(findBookIndex(book.getBarCode()), book);
-            return true;
+            return 403;
         } else {
             try (FileWriter mFileWriter = new FileWriter(path, true);
                     CSVWriter writer = new CSVWriter(mFileWriter, ',', CSVWriter.NO_QUOTE_CHARACTER,
                             CSVWriter.NO_ESCAPE_CHARACTER, System.getProperty("line.separator"))) {
                 writer.writeNext(book.toCsvStringArray());
-                return true;
+                return 200;
             } catch (IOException ex) {
                 ex.printStackTrace();
-                return false;
+                return 406;
             }
         }
     }
@@ -50,7 +48,7 @@ public class iostream {
      * @param data       a book to replace with
      * @return false if failed true if succesfull
      */
-    public static Boolean updateBook(int lineNumber, Book data) {
+    public static Boolean rewriteLine(int lineNumber, Book data) {
         try {
             Path tempPath = Paths.get(path);
             List<String> lines = Files.readAllLines(tempPath, StandardCharsets.UTF_8);
@@ -75,7 +73,8 @@ public class iostream {
             while ((lineInArray = reader.readNext()) != null) {
                 if (lineInArray[2].equals(barCode)) {
                     Book book = new Book(lineInArray[0], lineInArray[1], lineInArray[2],
-                            Double.parseDouble(lineInArray[3]), Integer.parseInt(lineInArray[4]));
+                            Double.parseDouble(lineInArray[3]), Integer.parseInt(lineInArray[4]),
+                            Integer.parseInt(lineInArray[5]), Integer.parseInt(lineInArray[6]));
                     return book;
                 }
             }
@@ -109,5 +108,20 @@ public class iostream {
             e.printStackTrace();
         }
         return -1;
+    }
+
+    /**
+     * if book exists, then return its total price
+     * 
+     * @param barCode
+     * @return
+     */
+    public static double totalPrice(String barCode) {
+        Book book = findBook(barCode);
+        if (book != null) {
+            Double total = book.totalPrice();
+            return total;
+        }
+        return 0.0;
     }
 }

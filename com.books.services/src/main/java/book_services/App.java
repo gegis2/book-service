@@ -29,11 +29,8 @@ public class App {
         post("/put", new Route() {
             @Override
             public Object handle(Request request, Response response) throws Exception {
-                Book book = new Book("book", "barcode", "author", 5.5, 5);
-                if (iostream.addBook(book))
-                    return "{\"status code\": 200}";
-                else
-                    return "{\"status code\": 406}";
+                Book book = new Book("book", "barcode2", "author", 5.5, 5, 5, 1800);
+                return "{\"status code\": " + iostream.addBook(book) + "}";
             }
         });
 
@@ -48,8 +45,11 @@ public class App {
         get("/totalPrice", new Route() {
             @Override
             public Object handle(Request request, Response response) throws Exception {
-                Book book = new Book("book", "barcode", "author", 5.5, 5);
-                return book.toJsonString();
+                Double total = iostream.totalPrice("barcode2");
+                if (total == 0.0)
+                    return "{\"status code\": 404}";
+                else
+                    return total;
             }
         });
     }
