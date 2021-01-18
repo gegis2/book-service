@@ -37,14 +37,7 @@ public class App {
         post("/update", new Route() {
             @Override
             public Object handle(Request request, Response response) throws Exception {
-                iostream.updateBook("barcode22", "name", "newBook");
-                iostream.updateBook("barcode22", "author", "nnnnnewwww author");
-                iostream.updateBook("barcode22", "price", "22.2");
-                iostream.updateBook("barcode22", "quantity", "50");
-                iostream.updateBook("barcode22", "releaseyear", "1777");
-                iostream.updateBook("barcode22", "scienceindex", "7");
-                iostream.updateBook("barcode22", "barCode", "newbarcode");
-                return "{\"status code\": " + iostream.updateBook("barcode", "name", "newBook") + "}";
+                return "{\"status code\": " + iostream.updateBook("newbarcode", "barcode", "barcode22") + "}";
             }
         });
 

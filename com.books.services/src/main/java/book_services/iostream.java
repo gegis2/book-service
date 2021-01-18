@@ -42,9 +42,8 @@ public class iostream {
     }
 
     public static int updateBook(String barCode, String collumn, String data) {
-        Book book = findBook(barCode);
-        System.out.println(book.toJsonString());
-        if (book != null) {
+        Book book;
+        if ((book = findBook(barCode)) != null) {
             if (collumn.toLowerCase().equals("name"))
                 book.setName(data);
             else if (collumn.toLowerCase().equals("author")) {
@@ -62,12 +61,13 @@ public class iostream {
                 book.setScienceIndex(Integer.parseInt(data));
             else
                 return 400;
+
             if (rewriteLine(findBookIndex(barCode), book))
                 return 200;
             else
                 return 400;
-        } else
-            return 404;
+        }
+        return 404;
     }
 
     /**
