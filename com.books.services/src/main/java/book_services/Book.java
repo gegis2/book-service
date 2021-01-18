@@ -63,16 +63,31 @@ public class Book {
         this.quantity = quantity;
     }
 
+    /**
+     * converts object to json format
+     * 
+     * @return string fit for json
+     */
     public String toJsonString() {
         return "{ \"name\": \"" + name + " \",\"author\": \"" + author + " \",\"barCode\": \"" + barCode
                 + "\",\"price\": " + price + " , \"quantity\": " + quantity + " } ";
     }
 
+    /**
+     * converts object to string array
+     * 
+     * @return array of strings in order of name author barCode price quantity
+     */
     public String[] toCsvStringArray() {
         String[] csvLine = { name, author, barCode, price + "", quantity + "" };
         return csvLine;
     }
 
+    /**
+     * converts object to csv string with ',' seperator
+     * 
+     * @return csv string in order of name author barCode price quantity
+     */
     public String toCsvStringLine() {
         String csvLine = name + "," + author + "," + barCode + "," + price + "," + quantity;
         return csvLine;
