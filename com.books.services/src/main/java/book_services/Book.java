@@ -63,13 +63,18 @@ public class Book {
         this.quantity = quantity;
     }
 
-    public String jsonString() {
-        return "{ \"name\": \"" + name + " \",\"author\": \"" + author + " \",\"bar code\": \"" + barCode
+    public String toJsonString() {
+        return "{ \"name\": \"" + name + " \",\"author\": \"" + author + " \",\"barCode\": \"" + barCode
                 + "\",\"price\": " + price + " , \"quantity\": " + quantity + " } ";
     }
 
-    public String[] csvString() {
+    public String[] toCsvStringArray() {
         String[] csvLine = { name, author, barCode, price + "", quantity + "" };
+        return csvLine;
+    }
+
+    public String toCsvStringLine() {
+        String csvLine = name + "," + author + "," + barCode + "," + price + "," + quantity;
         return csvLine;
     }
 }

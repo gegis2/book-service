@@ -12,7 +12,6 @@ import static spark.Spark.*;
  */
 public class App {
     public static void main(String[] args) {
-        iostream.appendData();
         after((Filter) (request, response) -> {
             response.header("Access-Control-Allow-Origin", "*");
             response.header("Access-Control-Allow-Methods", "GET");
@@ -23,7 +22,7 @@ public class App {
             @Override
             public Object handle(Request request, Response response) throws Exception {
                 Book book = new Book("book", "barcode", "author", 5.5, 5);
-                return book.jsonString();
+                return book.toJsonString();
             }
         });
 
@@ -31,7 +30,10 @@ public class App {
             @Override
             public Object handle(Request request, Response response) throws Exception {
                 Book book = new Book("book", "barcode", "author", 5.5, 5);
-                return book.jsonString();
+                if (iostream.addBook(book))
+                    return "{\"status\": 200}";
+                else
+                    return "{\"status\": 406}";
             }
         });
 
@@ -39,7 +41,7 @@ public class App {
             @Override
             public Object handle(Request request, Response response) throws Exception {
                 Book book = new Book("book", "barcode", "author", 5.5, 5);
-                return book.jsonString();
+                return book.toJsonString();
             }
         });
 
@@ -47,7 +49,7 @@ public class App {
             @Override
             public Object handle(Request request, Response response) throws Exception {
                 Book book = new Book("book", "barcode", "author", 5.5, 5);
-                return book.jsonString();
+                return book.toJsonString();
             }
         });
     }
