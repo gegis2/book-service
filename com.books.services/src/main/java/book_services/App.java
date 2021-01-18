@@ -21,7 +21,7 @@ public class App {
         get("/retrieve", new Route() {
             @Override
             public Object handle(Request request, Response response) throws Exception {
-                Book book = new Book("book", "barcode", "author", 5.5, 5);
+                Book book = new Book("book", "author", "barcode", 5.5, 5);
                 return book.toJsonString();
             }
         });
@@ -29,7 +29,7 @@ public class App {
         post("/put", new Route() {
             @Override
             public Object handle(Request request, Response response) throws Exception {
-                Book book = new Book("book", "barcode2", "author", 5.5, 5, 5, 1800);
+                Book book = new Book("book", "author", "barcode22", 5.5, 5, 5, 1800);
                 return "{\"status code\": " + iostream.addBook(book) + "}";
             }
         });
@@ -37,8 +37,14 @@ public class App {
         post("/update", new Route() {
             @Override
             public Object handle(Request request, Response response) throws Exception {
-                Book book = new Book("book", "barcode", "author", 5.5, 5);
-                return book.toJsonString();
+                iostream.updateBook("barcode22", "name", "newBook");
+                iostream.updateBook("barcode22", "author", "nnnnnewwww author");
+                iostream.updateBook("barcode22", "price", "22.2");
+                iostream.updateBook("barcode22", "quantity", "50");
+                iostream.updateBook("barcode22", "releaseyear", "1777");
+                iostream.updateBook("barcode22", "scienceindex", "7");
+                iostream.updateBook("barcode22", "barCode", "newbarcode");
+                return "{\"status code\": " + iostream.updateBook("barcode", "name", "newBook") + "}";
             }
         });
 

@@ -41,6 +41,35 @@ public class iostream {
         }
     }
 
+    public static int updateBook(String barCode, String collumn, String data) {
+        Book book = findBook(barCode);
+        System.out.println(book.toJsonString());
+        if (book != null) {
+            if (collumn.toLowerCase().equals("name"))
+                book.setName(data);
+            else if (collumn.toLowerCase().equals("author")) {
+                book.setAuthor(data);
+            } else if (collumn.toLowerCase().equals("barcode")) {
+                book.setBarCode(data);
+                System.out.println(book.toJsonString());
+            } else if (collumn.toLowerCase().equals("price"))
+                book.setPrice(Double.parseDouble(data));
+            else if (collumn.toLowerCase().equals("quantity"))
+                book.setQuantity(Integer.parseInt(data));
+            else if (collumn.toLowerCase().equals("releaseyear"))
+                book.setReleaseYear(Integer.parseInt(data));
+            else if (collumn.toLowerCase().equals("scienceindex"))
+                book.setScienceIndex(Integer.parseInt(data));
+            else
+                return 400;
+            if (rewriteLine(findBookIndex(barCode), book))
+                return 200;
+            else
+                return 400;
+        } else
+            return 404;
+    }
+
     /**
      * replaces a line in the csv file with the provided string
      * 

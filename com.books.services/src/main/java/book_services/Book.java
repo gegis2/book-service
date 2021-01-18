@@ -28,7 +28,7 @@ public class Book {
      * @param price
      * @param quantity
      */
-    public Book(String name, String barCode, String author, double price, int quantity) {
+    public Book(String name, String author, String barCode, double price, int quantity) {
         this.name = name;
         this.barCode = barCode;
         this.author = author;
@@ -49,7 +49,7 @@ public class Book {
      * @param scienceIndex 0 if not science journal
      * @param releaseYear  1901 if not antique book
      */
-    public Book(String name, String barCode, String author, double price, int quantity, int scienceIndex,
+    public Book(String name, String author, String barCode, double price, int quantity, int scienceIndex,
             int releaseYear) {
         this.name = name;
         this.barCode = barCode;
