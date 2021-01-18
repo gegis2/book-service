@@ -19,20 +19,27 @@ public class iostream {
             "book-service\\com.books.services\\src\\main\\java\\book_services\\Data\\books.csv").getAbsolutePath();
 
     /**
-     * adds a book to the csv file
+     * adds a book to the csv file, if it exists increases the quantity
      * 
      * @param book
      * @return false if failed; true if succesfull
      */
     public static boolean addBook(Book book) {
-        try (FileWriter mFileWriter = new FileWriter(path, true);
-                CSVWriter writer = new CSVWriter(mFileWriter, ',', CSVWriter.NO_QUOTE_CHARACTER,
-                        CSVWriter.NO_ESCAPE_CHARACTER, System.getProperty("line.separator"))) {
-            writer.writeNext(book.toCsvStringArray());
+        Book temp = findBook(book.getBarCode());
+        if (temp != null) {
+            book.setQuantity(temp.getQuantity() + book.getQuantity());
+            updateBook(findBookIndex(book.getBarCode()), book);
             return true;
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return false;
+        } else {
+            try (FileWriter mFileWriter = new FileWriter(path, true);
+                    CSVWriter writer = new CSVWriter(mFileWriter, ',', CSVWriter.NO_QUOTE_CHARACTER,
+                            CSVWriter.NO_ESCAPE_CHARACTER, System.getProperty("line.separator"))) {
+                writer.writeNext(book.toCsvStringArray());
+                return true;
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                return false;
+            }
         }
     }
 
@@ -87,6 +94,20 @@ public class iostream {
      * @return index if found -1 if doesnt exist
      */
     public static int findBookIndex(String barCode) {
+        try (CSVReader reader = new CSVReader(new FileReader(path))) {
+            String[] lineInArray;
+            int index = 0;
+            while ((lineInArray = reader.readNext()) != null) {
+                if (lineInArray[2].equals(barCode)) {
+                    return index;
+                }
+                index++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (CsvValidationException e) {
+            e.printStackTrace();
+        }
         return -1;
     }
 }

@@ -31,9 +31,9 @@ public class App {
             public Object handle(Request request, Response response) throws Exception {
                 Book book = new Book("book", "barcode", "author", 5.5, 5);
                 if (iostream.addBook(book))
-                    return "{\"status\": 200}";
+                    return "{\"status code\": 200}";
                 else
-                    return "{\"status\": 406}";
+                    return "{\"status code\": 406}";
             }
         });
 
