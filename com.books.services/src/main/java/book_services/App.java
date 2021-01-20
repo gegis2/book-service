@@ -45,7 +45,7 @@ public class App {
                     } else
                         return "{\"status code\": 404}";
                 } else
-                    return "{\"status code\": 403}";
+                    return "{\"status code\": 400}";
             }
         });
 
@@ -108,7 +108,7 @@ public class App {
                     try {
                         Double.parseDouble(dataParts.get(2));
                     } catch (NumberFormatException e) {
-                        return "{\"status code\": 400}";
+                        return "{\"status code\": 403}";
                     }
                 }
                 if (dataParts.get(1).toLowerCase().equals("quantity")
@@ -116,14 +116,14 @@ public class App {
                     try {
                         Double.parseDouble(dataParts.get(2));
                     } catch (NumberFormatException e) {
-                        return "{\"status code\": 400}";
+                        return "{\"status code\": 403}";
                     }
                 }
                 if (dataParts.get(1).toLowerCase().equals("scienceindex")) {
                     Pattern p = Pattern.compile(scienceIndexPattern, Pattern.CASE_INSENSITIVE);
                     Matcher m = p.matcher(dataParts.get(2));
                     if (!m.find())
-                        return "{\"status code\": 400}";
+                        return "{\"status code\": 403}";
                 }
 
                 System.out.println("received update request for book " + dataParts.get(0));
@@ -146,7 +146,7 @@ public class App {
                     } else
                         return "{\"status code\": 404}";
                 } else
-                    return "{\"status code\": 403}";
+                    return "{\"status code\": 400}";
             }
         });
     }

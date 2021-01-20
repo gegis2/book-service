@@ -58,7 +58,6 @@ public class iostream {
                 book.setAuthor(data);
             } else if (collumn.toLowerCase().equals("barcode")) {
                 book.setBarCode(data);
-                System.out.println(book.toJsonString());
             } else if (collumn.toLowerCase().equals("price"))
                 book.setPrice(Double.parseDouble(data));
             else if (collumn.toLowerCase().equals("quantity"))
