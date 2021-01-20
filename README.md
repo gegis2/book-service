@@ -10,10 +10,13 @@ returns status code if unsuccefull
 -404 if doesnt exists
 -400 if barcode contains non alphabetical/numerical characters
 
-###/put --data {"name":"book","author":"author","barCode":"barrrdcdode","price":5.5,"quantity":5,"releaseYear":1500,"scienceindex":1}
-###/put --data {"name":"book","author":"author","barCode":"barrrdcdode","price":5.5,"quantity":5,"releaseYear":1500}
-###/put --data {"name":"book","author":"author","barCode":"barrrdcdode","price":5.5,"quantity":5,"scienceindex":1}
-###/put --data {"name":"book","author":"author","barCode":"barrrdcdode","price":5.5,"quantity":5}
+### /put --data {"name":"book","author":"author","barCode":"barrrdcdode","price":5.5,"quantity":5,"releaseYear":1500,"scienceindex":1}
+
+### /put --data {"name":"book","author":"author","barCode":"barrrdcdode","price":5.5,"quantity":5,"releaseYear":1500}
+
+### /put --data {"name":"book","author":"author","barCode":"barrrdcdode","price":5.5,"quantity":5,"scienceindex":1}
+
+### /put --data {"name":"book","author":"author","barCode":"barrrdcdode","price":5.5,"quantity":5}
 
     returns status code
         -200 if succesfull
