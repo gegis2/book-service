@@ -46,7 +46,7 @@ returns status code if unsuccefull
 /totalPrice?barcode={barcode}
 ```
 
-returns price and barcode json if succesfull
-returns status code if unsuccefull
+returns price and barcode json if succesfull \n
+returns status code if unsuccefull \n
 -400 if barcode contains non alphabetical/numerical characters
 -404 if book with given barcode doesnt exist
