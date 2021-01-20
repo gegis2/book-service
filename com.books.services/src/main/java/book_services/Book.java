@@ -122,9 +122,9 @@ public class Book {
      * @return string fit for json
      */
     public String toJsonString() {
-        String line = "{ \"name\": \"" + name + " \",\"author\": \"" + author + " \",\"barCode\": \"" + barCode
-                + "\",\"price\": " + price + " , \"quantity\": " + quantity + " , \"science Index\": " + scienceIndex
-                + ", \"release year\": " + releaseYear + " } ";
+        String line = "{\"name\":\"" + name + "\",\"author\":\"" + author + "\",\"barCode\":\"" + barCode
+                + "\",\"price\":" + price + ",\"quantity\":" + quantity + ",\"science_index\":" + scienceIndex
+                + ",\"release_year\":" + releaseYear + "}";
         return line;
     }
 
