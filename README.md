@@ -8,10 +8,10 @@ API service for storing book data
 /retrieve?barcode={barcode}
 ```
 
-returns book json
-returns status code if unsuccefull
--404 if doesnt exists
--400 if barcode contains non alphabetical/numerical characters
+    returns book json
+    returns status code if unsuccefull
+        -404 if doesnt exists
+        -400 if barcode contains non alphabetical/numerical characters
 
 ```bash
 /put --data {"name":"book","author":"author","barCode":"barrrdcdode","price":5.5,"quantity":5,"releaseYear":1500,"scienceindex":1}
@@ -46,7 +46,7 @@ returns status code if unsuccefull
 /totalPrice?barcode={barcode}
 ```
 
-returns price and barcode json if succesfull \n
-returns status code if unsuccefull \n
--400 if barcode contains non alphabetical/numerical characters
--404 if book with given barcode doesnt exist
+    returns price and barcode json if succesfull
+    returns status code if unsuccefull
+        -400 if barcode contains non alphabetical/numerical characters
+        -404 if book with given barcode doesnt exist
