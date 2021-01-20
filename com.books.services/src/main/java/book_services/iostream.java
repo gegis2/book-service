@@ -41,6 +41,14 @@ public class iostream {
         }
     }
 
+    /**
+     * changes the specified collumn of a book
+     * 
+     * @param barCode books barcode
+     * @param collumn collumn to be replaced
+     * @param data    string of data to replace with
+     * @return status code of the operation
+     */
     public static int updateBook(String barCode, String collumn, String data) {
         Book book;
         if ((book = findBook(barCode)) != null) {

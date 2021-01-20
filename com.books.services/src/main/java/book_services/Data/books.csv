@@ -1,3 +1,5 @@
-newBook,author,barcode,5.5,5,5,1901
+newBook,author,barcode,0.01,5,5,1901
 book,author,barcode2,5.5,5,5,1800
-newBook,nnnnnewwww author,barcode22,22.2,50,7,1777
+newBook,nnnnnewwww author,barcode22,0.01,50,7,1777
+book,author,barrrcode,5.5,5,0,1901
+book,author,barrrdcdode,5.5,5,1,1500

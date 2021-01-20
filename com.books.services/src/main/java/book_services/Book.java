@@ -35,7 +35,7 @@ public class Book {
         this.price = price;
         this.quantity = quantity;
         this.scienceIndex = 0;
-        this.releaseYear = 1901;
+        this.releaseYear = 2020;
     }
 
     /**
@@ -47,7 +47,7 @@ public class Book {
      * @param price
      * @param quantity
      * @param scienceIndex 0 if not science journal
-     * @param releaseYear  1901 if not antique book
+     * @param releaseYear  2020 if not antique book
      */
     public Book(String name, String author, String barCode, double price, int quantity, int scienceIndex,
             int releaseYear) {
